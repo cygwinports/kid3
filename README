@@ -1,0 +1,65 @@
+kid3
+------------------------------------------
+If you want to easily tag multiple MP3, Ogg/Vorbis, FLAC, MPC, MP4/AAC, 
+MP2, Speex, TrueAudio and WavPack files (e.g. full albums) without 
+typing the same information again and again and have control over both 
+ID3v1 and ID3v2 tags, then Kid3 is the program you are looking for.
+
+Runtime requirements:
+  cygwin-1.7.0-60
+  libgcc1-4.3.2-2
+  libid3_3.8.3-3.8.3-3
+  libkdecore5-4.2.4-1
+  libmp4v2_1-1.9.1-1
+  libogg0-1.1.3-1
+  libQtCore4-4.5.2-1
+  libQtDBus4-4.5.2-1
+  libQtGui4-4.5.2-1
+  libQtNetwork4-4.5.2-1
+  libQtXml4-4.5.2-1
+  libstdc++6-4.3.2-2
+  libtag1-1.5-10
+  libtunepimp5-0.5.3-3
+  libvorbis0-1.2.0-2
+  libvorbisfile3-1.2.0-2
+
+Build requirements:
+(besides corresponding -devel packages)
+  automoc4-0.9.88-10
+  binutils-2.19.51-1
+  cmake-2.6.4-10
+  cygport-0.9.8-1
+  gcc4-core-4.3.2-2
+  gcc4-g++-4.3.2-2
+  make-3.81-2
+  pkg-config-0.23b-10
+
+Canonical website:
+  http://kid3.sourceforge.net/
+
+Canonical download:
+  http://downloads.sourceforge.net/kid3/
+
+-------------------------------------------
+
+Build instructions:
+  unpack kid3-1.2-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./kid3-1.2-X.cygport all
+
+This will create:
+  /usr/src/kid3-1.2-X-src.tar.bz2
+  /usr/src/kid3-1.2-X.tar.bz2
+
+-------------------------------------------
+
+Port Notes:
+
+----- version 1.2-1 -----
+Initial release for Cygwin 1.7.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

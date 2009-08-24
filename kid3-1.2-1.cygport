@@ -1,0 +1,20 @@
+inherit kde4
+
+DESCRIPTION="KDE ID3 tagger"
+HOMEPAGE="http://kid3.sourceforge.net/"
+SRC_URI="mirror://sourceforge/kid3/${P}.tar.gz"
+PATCH_URI="mirror://gentoo/${P}-libmp4v2.patch.bz2
+           1.2-libogg.patch"
+
+DIFF_EXCLUDES="*.po"
+
+# flac: libFLAC++6 requires rebuild for 1.7: http://cygwin.com/ml/cygwin/2009-08/msg00735.html
+CYGCMAKE_ARGS="
+	-DWITH_KDE=ON
+	-DWITH_FLAC=OFF
+	-DWITH_ID3LIB=ON
+	-DWITH_MP4V2=ON
+	-DWITH_TAGLIB=ON
+	-DWITH_TUNEPIMP=ON
+	-DWITH_VORBIS=ON
+"
