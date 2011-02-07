@@ -1,5 +1,5 @@
 category: Audio KDE
-requires: libgcc1 libid3_3.8.3 libkdecore5 libmp4v2_1 libogg0 libQtCore4 libQtDBus4 libQtGui4 libQtNetwork4 libQtXml4 libstdc++6 libtag1 libtunepimp5 libvorbis0 libvorbisfile3
+requires: libgcc1 libid3_3.8.3 libkdecore5 libmp4v2_1 libogg0 libphonon4 libQtCore4 libQtDBus4 libQtGui4 libQtNetwork4 libQtXml4 libstdc++6 libtag1 libtunepimp5 libvorbis0 libvorbisfile3
 sdesc: "KDE ID3 tagger"
 ldesc: "If you want to easily tag multiple MP3, Ogg/Vorbis, FLAC, MPC, 
 MP4/AAC, MP2, Speex, TrueAudio and WavPack files (e.g. full albums) 
