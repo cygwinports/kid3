@@ -6,13 +6,11 @@ SRC_URI="mirror://sourceforge/kid3/${P}.tar.gz"
 
 DIFF_EXCLUDES="*.po"
 
-# flac: libFLAC++6 requires rebuild for 1.7: http://cygwin.com/ml/cygwin/2009-08/msg00735.html
 CYGCMAKE_ARGS="
 	-DWITH_KDE=ON
-	-DWITH_FLAC=OFF
+	-DWITH_FLAC=ON
 	-DWITH_ID3LIB=ON
 	-DWITH_MP4V2=ON
 	-DWITH_TAGLIB=ON
-	-DWITH_TUNEPIMP=ON
 	-DWITH_VORBIS=ON
 "
