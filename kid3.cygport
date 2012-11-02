@@ -1,0 +1,24 @@
+inherit kde4
+
+NAME="kid3"
+VERSION=2.2
+RELEASE=1
+CATEGORY="Audio KDE"
+SUMMARY="KDE ID3 tagger"
+DESCRIPTION="If you want to easily tag multiple MP3, Ogg/Vorbis, FLAC, MPC,
+MP4/AAC, MP2, Speex, TrueAudio and WavPack files (e.g. full albums) without
+typing the same information again and again and have control over both ID3v1
+and ID3v2 tags, then Kid3 is the program you are looking for."
+HOMEPAGE="http://kid3.sourceforge.net/"
+SRC_URI="mirror://sourceforge/kid3/${P}.tar.gz"
+
+DIFF_EXCLUDES="*.po"
+
+CYGCMAKE_ARGS="
+	-DWITH_KDE=ON
+	-DWITH_FLAC=ON
+	-DWITH_ID3LIB=ON
+	-DWITH_MP4V2=ON
+	-DWITH_TAGLIB=ON
+	-DWITH_VORBIS=ON
+"

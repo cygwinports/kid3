@@ -1,8 +1,0 @@
-category: Audio KDE
-requires: libavcodec53 libavformat53 libavutil51 libchromaprint0 libFLAC8 libFLAC++6 libgcc1 libid3_3.8.3 libkdecore5 libmp4v2_1 libogg0 libphonon4 libQtCore4 libQtDBus4 libQtGui4 libQtNetwork4 libQtXml4 libstdc++6 libtag1 libvorbis0 libvorbisfile3
-sdesc: "KDE ID3 tagger"
-ldesc: "If you want to easily tag multiple MP3, Ogg/Vorbis, FLAC, MPC, 
-MP4/AAC, MP2, Speex, TrueAudio and WavPack files (e.g. full albums) 
-without typing the same information again and again and have control 
-over both ID3v1 and ID3v2 tags, then Kid3 is the program you are looking 
-for."
