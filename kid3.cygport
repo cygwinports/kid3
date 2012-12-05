@@ -1,7 +1,7 @@
-inherit kde4
+inherit kde4 qt4-cmake
 
 NAME="kid3"
-VERSION=2.2
+VERSION=2.2.1
 RELEASE=1
 CATEGORY="Audio KDE"
 SUMMARY="KDE ID3 tagger"
@@ -12,13 +12,35 @@ and ID3v2 tags, then Kid3 is the program you are looking for."
 HOMEPAGE="http://kid3.sourceforge.net/"
 SRC_URI="mirror://sourceforge/kid3/${P}.tar.gz"
 
+PKG_NAMES="kid3 kid3-qt"
+kid3_CONTENTS="--exclude=kid3-qt* etc/postinstall/ usr/"
+kid3_qt_SUMMARY=${SUMMARY/KDE/Qt}
+kid3_qt_CONTENTS="etc/postinstall/ usr/bin/kid3-qt.exe usr/share/applications/kid3-qt.*
+                  usr/share/doc/kid3-qt/ usr/share/icons/*/*/*/kid3-qt.* usr/share/kid3-qt/"
 DIFF_EXCLUDES="*.po"
 
+# these are common to KDE and Qt-only builds
 CYGCMAKE_ARGS="
-	-DWITH_KDE=ON
 	-DWITH_FLAC=ON
 	-DWITH_ID3LIB=ON
 	-DWITH_MP4V2=ON
 	-DWITH_TAGLIB=ON
 	-DWITH_VORBIS=ON
 "
+
+src_compile() {
+	mkdir -p ${B}/kde
+	cd ${B}/kde
+	kde4_compile -DWITH_KDE=ON
+
+	mkdir -p ${B}/qt
+	cd ${B}/qt
+	qt4_cmake_compile -DWITH_KDE=OFF
+}
+
+src_install() {
+	cd ${B}/kde
+	cyginstall
+	cd ${B}/qt
+	cyginstall
+}
