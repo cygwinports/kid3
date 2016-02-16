@@ -1,7 +1,7 @@
-inherit kde4 qt4-cmake
+inherit kde4
 
 NAME="kid3"
-VERSION=2.3
+VERSION=3.3.1
 RELEASE=1
 CATEGORY="Audio"
 SUMMARY="KDE ID3 tagger"
@@ -10,37 +10,57 @@ MP4/AAC, MP2, Speex, TrueAudio and WavPack files (e.g. full albums) without
 typing the same information again and again and have control over both ID3v1
 and ID3v2 tags, then Kid3 is the program you are looking for."
 HOMEPAGE="http://kid3.sourceforge.net/"
-SRC_URI="mirror://sourceforge/kid3/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/kid3/kid3-${VERSION}.tar.gz"
 
-PKG_NAMES="kid3 kid3-qt"
-kid3_CONTENTS="--exclude=kid3-qt* etc/postinstall/ usr/"
+PKG_NAMES="kid3 kid3-qt kid3-core"
+kid3_CONTENTS="
+	etc/postinstall/
+	usr/bin/kid3.exe
+	usr/share/appdata/kid3.appdata.xml
+	usr/share/applications/kde4/kid3.desktop
+	usr/share/doc/HTML/*/kid3/
+	usr/share/icons/hicolor/*/apps/kid3.*
+	usr/share/kde4/apps/kid3/
+	usr/share/man/man1/kid3.1*
+	usr/share/man/*/man1/kid3.1*
+"
+kid3_core_SUMMARY="${SUMMARY/KDE/Qt} core components"
+kid3_core_CONTENTS="
+	usr/bin/cygkid3-core.dll
+	usr/bin/cygkid3-gui.dll
+	usr/bin/kid3-cli.exe
+	usr/lib/kid3/plugins/
+	usr/share/dbus-1/interfaces/net.sourceforge.Kid3.xml
+	usr/share/doc/kid3/
+	usr/share/kid3/qml/
+	usr/share/man/man1/kid3-cli.1*
+	usr/share/man/*/man1/kid3-cli.1*
+"
 kid3_qt_SUMMARY=${SUMMARY/KDE/Qt}
-kid3_qt_CONTENTS="etc/postinstall/ usr/bin/kid3-qt.exe usr/share/applications/kid3-qt.*
-                  usr/share/doc/kid3-qt/ usr/share/icons/*/*/*/kid3-qt.* usr/share/kid3-qt/"
+kid3_qt_CONTENTS="
+	etc/postinstall/
+	usr/bin/kid3-qt.exe
+	usr/share/appdata/kid3-qt.appdata.xml
+	usr/share/applications/kid3-qt.desktop
+	usr/share/doc/kid3-qt/
+	usr/share/icons/*/*/*/kid3-qt.*
+	usr/share/kid3/translations/
+	usr/share/man/man1/kid3-qt.1*
+	usr/share/man/*/man1/kid3-qt.1*
+"
 DIFF_EXCLUDES="*.po"
 
 # these are common to KDE and Qt-only builds
 CYGCMAKE_ARGS="
+	-DWITH_CHROMAPRINT=ON
+	-DWITH_FFMPEG=OFF
 	-DWITH_FLAC=ON
+	-DWITH_GSTREAMER=ON
+	-DWITH_GSTREAMER_VERSION=1.0
 	-DWITH_ID3LIB=ON
 	-DWITH_MP4V2=ON
 	-DWITH_TAGLIB=ON
 	-DWITH_VORBIS=ON
+	-DWITH_QT4=ON
+	-DWITH_NO_MANCOMPRESS=ON
 "
-
-src_compile() {
-	mkdir -p ${B}/kde
-	cd ${B}/kde
-	kde4_compile -DWITH_KDE=ON
-
-	mkdir -p ${B}/qt
-	cd ${B}/qt
-	qt4_cmake_compile -DWITH_KDE=OFF
-}
-
-src_install() {
-	cd ${B}/kde
-	cyginstall
-	cd ${B}/qt
-	cyginstall
-}
