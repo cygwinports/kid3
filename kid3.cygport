@@ -1,7 +1,7 @@
-inherit kde4
+inherit kf5
 
 NAME="kid3"
-VERSION=3.3.1
+VERSION=3.4.4
 RELEASE=1
 CATEGORY="Audio"
 SUMMARY="KDE ID3 tagger"
@@ -17,10 +17,10 @@ kid3_CONTENTS="
 	etc/postinstall/
 	usr/bin/kid3.exe
 	usr/share/appdata/kid3.appdata.xml
-	usr/share/applications/kde4/kid3.desktop
+	usr/share/applications/kid3.desktop
 	usr/share/doc/HTML/*/kid3/
 	usr/share/icons/hicolor/*/apps/kid3.*
-	usr/share/kde4/apps/kid3/
+	usr/share/kxmlgui5/kid3/
 	usr/share/man/man1/kid3.1*
 	usr/share/man/*/man1/kid3.1*
 "
@@ -61,6 +61,6 @@ CYGCMAKE_ARGS="
 	-DWITH_MP4V2=ON
 	-DWITH_TAGLIB=ON
 	-DWITH_VORBIS=ON
-	-DWITH_QT4=ON
+	-DWITH_QT5=ON
 	-DWITH_NO_MANCOMPRESS=ON
 "
